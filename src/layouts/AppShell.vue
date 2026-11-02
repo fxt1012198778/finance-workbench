@@ -1,11 +1,23 @@
 <script setup lang="ts">
-// W1 D4 · 后台壳：顶栏 + 左侧静态菜单 + 内容区
-// 尺寸/色值来源：docs/设计稿/README.md「关键设计值（D4 AppShell 直接抄）」
-// 页签栏（顶栏下方 h=32）是 D5 的活；5 个路由空页面 D6 再建，菜单先静态。
-// 顶栏总高 ≈138 含页签区；D4 先做 93px 的 logo/标题行，页签栏 D5 补上后凑足 138。
-const menuItems = ['首页', '我要办', '待我办', '我要查', '我要学', '提醒我', '个人中心']
-// 静态选中态占位；D6 建完路由后改成由 route.name 驱动
-const activeIndex = 0
+import { useRoute } from 'vue-router'
+import TabBar from '@/components/TabBar.vue'
+
+// W1 D5 · 后台壳：顶栏 + 页签栏 + 左侧菜单 + 内容区
+// 尺寸/色值来源：docs/设计稿/README.md「关键设计值」
+// 顶栏总高 ≈138 = logo/标题行 93 + 页签栏 32（D5 已加）+ 余量
+// D7 待办：F5 刷新页签不丢（localStorage）
+const route = useRoute()
+
+// 个人中心课表未排页面（W6 收尾才做），先置灰
+const menuItems = [
+  { title: '首页', to: '/' },
+  { title: '我要办', to: '/handle' },
+  { title: '待我办', to: '/todo' },
+  { title: '我要查', to: '/query' },
+  { title: '我要学', to: '/study' },
+  { title: '提醒我', to: '/remind' },
+  { title: '个人中心', to: '', disabled: true },
+]
 </script>
 
 <template>
@@ -20,16 +32,23 @@ const activeIndex = 0
       </div>
     </header>
 
+    <!-- 页签栏：点菜单开页签 / 点 × 关 / 点页签切路由（联动机制见 stores/tabs.ts） -->
+    <TabBar />
+
     <div class="shell-body">
       <!-- 左菜单：宽 126，底色 #7CAEE0 60%，项 79×77 @ x=21，字 18 白 -->
       <aside class="side-menu">
         <ul>
           <li
-            v-for="(item, i) in menuItems"
-            :key="item"
-            :class="{ active: i === activeIndex }"
+            v-for="item in menuItems"
+            :key="item.title"
+            :class="{ active: !item.disabled && route.path === item.to }"
+            :style="item.disabled ? { opacity: 0.45, cursor: 'not-allowed' } : undefined"
           >
-            {{ item }}
+            <RouterLink v-if="!item.disabled" :to="item.to" class="menu-link">
+              {{ item.title }}
+            </RouterLink>
+            <span v-else>{{ item.title }}</span>
           </li>
         </ul>
       </aside>
@@ -136,6 +155,15 @@ const activeIndex = 0
   text-align: center;
   cursor: pointer;
   border-radius: 4px;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: inherit;
 }
 
 .side-menu li.active {
