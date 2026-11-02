@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+.eslintcache
+
+# Cypress
+/cypress/videos/
+/cypress/screenshots/
+
+# Vitest
+__screenshots__/
+
+# Vite
+*.timestamp-*-*.mjs
+
+# 本地资料（学习文档 + 设计稿，不进仓库）
+docs/
+
+# 环境变量（W4 起会用到）
+.env
+.env.*
+!.env.example
