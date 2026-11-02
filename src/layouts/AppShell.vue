@@ -46,7 +46,8 @@ const activeIndex = 0
 .app-shell {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* 锁死一屏：滚动发生在菜单/内容区内部，页面级不出滚动条 */
+  height: 100vh;
 }
 
 /* ---- 顶栏 ---- */
@@ -114,6 +115,7 @@ const activeIndex = 0
   flex-shrink: 0;
   background: rgba(124, 174, 224, 0.6); /* #7CAEE0 60% */
   padding: 24px 0;
+  overflow-y: auto; /* 窗口太矮时菜单内部滚 */
 }
 
 .side-menu ul {
@@ -148,5 +150,6 @@ const activeIndex = 0
   min-width: 0;
   padding: 24px 52px 52px;
   background: #f5f7fa;
+  overflow-y: auto; /* 内容区自己滚，顶栏/菜单钉住 */
 }
 </style>
