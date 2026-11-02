@@ -46,7 +46,7 @@ function close(tab: { name: string; path: string }) {
   display: flex;
   align-items: stretch;
   background: #fff;
-  border-bottom: 1px solid #e4e9f2;
+  border-bottom: 1px solid var(--color-border);
   padding: 0 50px;
   overflow-x: auto;
 }
@@ -57,13 +57,13 @@ function close(tab: { name: string; path: string }) {
   gap: 6px;
   padding: 0 16px;
   font-size: 16px;
-  color: #2c3e50;
+  color: var(--color-text);
   cursor: pointer;
   white-space: nowrap;
 }
 
 .tab-item.active {
-  background: #0863e6; /* 激活底色（设计稿标注） */
+  background: var(--color-primary); /* 激活底色（设计稿标注） */
   color: #fff;
 }
 

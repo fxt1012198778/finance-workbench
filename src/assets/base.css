@@ -1,4 +1,17 @@
-/* W1 D4 · 全局基础样式（精简自 create-vue starter：保留 reset/字体，删掉暗色主题与演示变量） */
+/* W1 D6 · 全局基础样式 + 设计色板
+   （精简自 create-vue starter：保留 reset/字体，删掉暗色主题与演示变量） */
+
+:root {
+  /* 色板：值全部来自 docs/设计稿/README.md「关键设计值」，W1 D6 入册 */
+  --color-primary: #0863e6; /* 主色：顶栏/页签激活/菜单选中文字 */
+  --color-text: #2c3e50; /* 主文字 */
+  --color-text-secondary: #8a94a6; /* 次要文字 */
+  --color-border: #e4e9f2; /* 边框 */
+  --color-bg: #f5f7fa; /* 内容区背景 */
+  --color-card: #f2f8ff; /* 内容卡片底色（W2 起大量用） */
+  --color-menu: rgba(124, 174, 224, 0.6); /* 左菜单底色 #7CAEE0 60% */
+  --color-badge: #ff4a4a; /* 徽标红（W3 用，先入册） */
+}
 
 *,
 *::before,
@@ -8,8 +21,8 @@
 }
 
 body {
-  color: #2c3e50;
-  background: #f5f7fa;
+  color: var(--color-text);
+  background: var(--color-bg);
   line-height: 1.6;
   font-family:
     -apple-system,

@@ -73,7 +73,7 @@ const menuItems = [
 .top-bar {
   height: 93px;
   flex-shrink: 0;
-  background: #0863e6;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   padding: 0 50px;
@@ -132,7 +132,7 @@ const menuItems = [
 .side-menu {
   width: 126px;
   flex-shrink: 0;
-  background: rgba(124, 174, 224, 0.6); /* #7CAEE0 60% */
+  background: var(--color-menu); /* #7CAEE0 60% */
   padding: 24px 0;
   overflow-y: auto; /* 窗口太矮时菜单内部滚 */
 }
@@ -169,15 +169,16 @@ const menuItems = [
 .side-menu li.active {
   height: 85px;
   background: #fff; /* 选中态：白底，文字变蓝 */
-  color: #0863e6;
+  color: var(--color-primary);
 }
 
 /* ---- 内容区 ---- */
 .content {
   flex: 1;
   min-width: 0;
-  padding: 24px 52px 52px;
-  background: #f5f7fa;
+  /* 顶栏 93 + 页签 32 = 125，设计稿内容区从 y≈150 开始 → 顶距 25 */
+  padding: 25px 52px 52px;
+  background: var(--color-bg);
   overflow-y: auto; /* 内容区自己滚，顶栏/菜单钉住 */
 }
 </style>

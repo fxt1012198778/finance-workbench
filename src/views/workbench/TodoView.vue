@@ -16,7 +16,7 @@
 
 .placeholder p {
   margin-top: 0.5rem;
-  color: #8a94a6;
+  color: var(--color-text-secondary);
   font-size: 0.9rem;
 }
 </style>

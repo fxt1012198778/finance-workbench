@@ -21,7 +21,7 @@
 }
 
 .home-placeholder p {
-  color: var(--color-text-2, #666);
+  color: var(--color-text-secondary);
   font-size: 0.95rem;
 }
 </style>
